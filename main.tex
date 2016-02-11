@@ -1,0 +1,147 @@
+\documentclass{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{multicol}
+\usepackage{mdwlist} % für kompakte Listendarstellung
+
+\begin{document}
+\section*{Vim Ref}
+
+\begin{multicols}{2}
+
+\subsection*{Bewegungs-Befehle}
+
+\begin{description*}
+	\item[w,b] Wort vor, zurück
+	\item[W,B] WORT vor, zurück
+	\item[0,\$] Zum Anfang,Ende der Zeile gehen
+	\item[i,a] Einfügen vor, nach aktuellem Zeichen 
+	\item[I,A] Einfügen am Anfang (ex. Space), Ende der Zeile
+	\item[gg,G] Zur Zeile <Nr> gehen (Anfang des Files), zum Ende des Files gehen. 	  
+\end{description*} 
+
+\subsection*{Makros}
+
+\begin{description*}
+  \item[qa,qA] Makroaufnahme starten: Reg. <<a>> überschreiben, an Reg. <<a>> anhängen.
+   \item[q] Makroaufnahme stoppen
+   \item[@a,@@] Makro Reg. <<a>> starten, letztes Makro starten.
+   \item[:reg a] Inhalt Reg. <<a>> anzeigen.
+\end{description*}
+
+\subsection*{Vim-Kommandos}
+
+\begin{description*}
+
+	\item[:e <Datei>] öffnet Datei (ohne Anführungs u. Schlusszeichen)
+	\item[:3d] lösche die dritte Zeile
+	\item[:3,5d] lösche Zeile 3 bis 5
+	\item[:.d] lösche aktuelle Zeile (.)
+	\item[. \$ \%] aktuelle Zeile, letzte Zeile, alle Zeilen
+   \item[:nohlsearch] Löscht Hervorhebungen (nach Suchvorgängne)
+\end{description*} 
+
+\subsection*{Zeilenweise Kommandos}
+
+\begin{description*}
+
+	\item[yy] Zeile ins yank-Register kopieren (Reg. \dq)
+	\item[yyp] Zeile duplizieren
+	\item[dd] aktuelle Zeile löschen
+	\item[ddp] Zeile nach unten verschieben (delete und put)
+	\item[o,O] eine Zeile unten, oben einfügen und in den Insert-Modus wechseln.
+	\item[0,\$] zum Anfang,Ende der Zeile gehen (0=Null)
+	\item[I,A] zum Anfang,Ende der Zeile gehen u. in den Insert-Modus wechseln.
+
+\end{description*}
+
+\subsection*{Suchen und Ersetzen}
+
+\begin{description*}
+
+  \item[:\%s/<suchen>/<ersetzen>/] Lokales Ersetzen
+  \item[:\%s/<suchen>/<ersetzen>/g] globales Ersetzen
+  \item[\textbackslash c,\textbackslash C] schaltet Option \texttt{ignorecase} ein,aus. 
+  \item[\textbackslash v,\textbackslash V] schaltet Option \texttt{very magic} ein, wörtliche Suche
+
+
+\end{description*}
+
+
+\subsection*{Split Windows}
+
+\begin{description*}
+
+  \item[:split <Datei>] Lädt <Datei> und teilt das Fenster horizontal (eins oben, eins unten)
+  \item[:vsplit <Datei>] Lädt <Datei> und teilt das Fenster vertikal
+  \item[\ldots] Wechselt zwischen den Fenster
+
+\end{description*}
+
+\subsection*{Tabulator}
+
+  \begin{description*}
+
+    \item[:tabe <Datei>] Lädt <Datei> und erzeugt ein neuen Tabulator
+    \item[gt, gT, 5gt] nächster, vorheriger Tabulator, zum 5. Tabulator gehen
+
+  \end{description*}
+
+\subsection*{Buffer}
+
+\begin{description*}
+
+  \item[:buffer <Datei>] Lädt <Datei> und erzeugt einen neuen Buffer.
+  \item[:bn] zum nächsten Puffer gehen.
+
+\end{description*}
+
+\subsection*{Argumentliste}
+
+\begin{description*}
+
+	\item[:argdo] Ex-Befehl auf allen Elementen der Argumentliste ausführen
+	\item[:args <Files>] Alle Dateien anzeigen oder mit Dateien füllen
+	\item[*,**] Jokerzeichen für null od. mehrere Zeichen, ** rekursiv
+	\item[**/*.tex] Globs für alle LaTeX-Dateien
+	\item[:next,:prev] Argumentliste durchlaufen
+\end{description*}<++>
+\subsection*{Kommandos Vim-LaTeX}
+
+\begin{description*}
+
+  \item[:TTemplate] Zeigt Tex-Templates an (im Ordner .vim/ftplugin/latex-suite/templates)
+\end{description*}
+
+\subsection*{Optionen ein- und ausschalten}
+
+\begin{description*}
+  \item[:se[t] <Opt>] Option einschalten, ohne Parameter: alle eingeschalteten Optionen anzeigen.
+  \item[:no<Opt>] Option ausschalten (z.B. :nohlsearch)
+  \item[hlsearch] Markierung anzeigen
+\end{description*}
+
+\subsection*{Register}
+
+\begin{description*}
+  \item[\dq ay<Bew>] Fügt <Bew> Text ins Register a
+  \item[\dq ap,\dq aP] Fügt Reg. a vor,nach der aktuellen Stelle ein
+  \item[\dq\dq, \dq0,\dq<Underscore>] Yank-Register, Delete-Register, <<Black Hole>>
+\end{description*}
+
+\subsection*{Spelling}
+
+\begin{description*}
+	\item[:set spell] Rechtschreibung einschalten
+	\item[:set spelllang=] Sprache einstellen (en\_us, de\_ch)
+	\item[z=] Vorschläge anzeigen
+	\item[zg] Wort ins Wörterbuch anfügen
+	\item[zw] Wort unter dem Curser aus WB löschen
+	\item[zug] Rückgängig-Befehl für zg od. zw
+\end{description*}
+
+\end{multicols}
+\end{document}
+
